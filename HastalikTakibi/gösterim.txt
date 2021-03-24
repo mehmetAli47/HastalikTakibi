@@ -1,2 +1,0 @@
-session
-hasta ismine tıklandıgı zman ılgılı hastanın isim tc bilgisini getirtme(hastalık eklme butonunnun yanı)
