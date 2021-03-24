@@ -1,0 +1,55 @@
+﻿@model List<HastalikTakibi.DAL.Models.Database.PatientInformationView>
+@{
+    ViewData["Title"] = "PatientInformation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+
+</head>
+<body  style="background-color:beige;">
+    <div class="container" style="width:1500px; margin-left:-255px;">
+        <div>
+            <h4 style="color: #ff9030; text-align: center;border: solid 2px black; margin-top: 2px; background-color: green;height: 45px; width: 1520px;">Hasta Bilgisi</h4>
+            <div class="row">
+                <div class="col-md-4"><a class="btn btn-success btnAdd" style="margin-top:5px;" href="/Patient/PatientInformationAdd/@ViewBag.PatientId">Yeni Hastalık ekle </a></div>
+                <div class="col-md-8" style="margin-left: -190px; font-size: xx-large;">@ViewBag.PatientName</div>
+            </div>
+            
+
+        </div>
+        <table id=" example" class="table table-danger"style=" margin-top: 20px;  background-color: beige; width: 1455px;">
+            <thead>
+                <tr>
+                    <th> Id</th>
+                    <th> Hastalık Adı</th>
+                    <th> Hastalanma zamanı</th>
+                    <th> İyileşme zamanı</th>
+                    <th> Hatalandığı il</th>
+                    <th> Hastalandıgı ilçe</th>
+                    <th> Belirtiler</th>
+                    <th> Güncelle</th>
+                    <th> Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var information in Model)
+                {
+                <tr>
+                    <th>@information.Id</th>
+                    <td>@information.DiseaseName</td>
+                    <td>@information.WhenIll</td>
+                    <td>@information.RecoveryTime</td>
+                    <td>@information.ProvinceName</td>
+                    <td>@information.DistrictName</td>
+                    <td>@information.Symptoms</td>
+                    <td><a class="btn btn-success btnUpdate" href="/Patient/PatientInformationUpdate/@information.Id" data-id="@information.Id">Güncelle </a></td>
+                    <td><a class="btn btn-success btnUpdate" href="/Patient/PatientInformationDelete/@information.Id" data-id="@information.Id">sil </a></td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</body>

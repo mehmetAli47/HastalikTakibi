@@ -1,0 +1,76 @@
+﻿<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+            li a:hover {
+                background-color: #f39c12;
+            }
+
+    .active {
+        background-color: brown;
+    }
+
+    ul li ul {
+        background-color: #2c3e50;
+        display: none;
+        position: absolute;
+        width: 100px
+    }
+
+    ul li:hover ul {
+        display: block;
+    }
+
+    li ul li {
+        display: block;
+    }
+
+    nav {
+        border: 1px solid blue;
+        width: auto;
+        background-color: darkblue;
+    }
+    .topMenu {
+        max-width: 50%;
+        margin: 0 auto;
+    }
+    
+</style>
+<nav class="topMenu" >
+
+
+    <ul>
+        <li class="aktif"><a href="/Anasayfa">Ana sayfa</a></li>
+
+        <li>
+            <a href="/Category/Index" >Kategori</a>
+
+            <ul>
+                @foreach (SelectListItem item in ViewBag.CategoryHasDiseaseList)
+                {
+                    <li class="btn btn-group"><a  href="/Disease/Index?categoryId=@item.Value">@item.Text</a></li>
+                }
+            </ul>
+        </li>
+        <li><a href="/Disease/Index">Hastalık</a></li>
+        <li><a href="/Patient/Index">Hastalar</a></li>
+
+        
+    </ul>
+</nav>

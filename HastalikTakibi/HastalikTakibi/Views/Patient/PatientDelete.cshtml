@@ -1,0 +1,79 @@
+﻿@model HastalikTakibi.Models.PatientVm
+
+@{
+    ViewData["Title"] = "PatientDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>Bunu silmek istediğinizden emin misiniz?</h3>
+<div>
+    <form asp-action="PatientDeleteConfirm" method="post">
+        <input value="@Model.Id" name="id" id="id" type="hidden" />
+        <hr />
+        
+        <dl class="row">
+            <dt class="col-sm-2">
+                <label>ADI</label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                <label>SOYAD</label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Surname)
+            </dd>
+            <dt class="col-sm-2">
+                <label>ADRES</label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+            <dt class="col-sm-2">
+                <label>E-MAİL</label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EMail)
+            </dd>
+            <dt class="col-sm-2">
+                <label>T.C NUMARASI</label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TC)
+            </dd>
+            <dt class="col-sm-2">
+                <label>TELEFON NUMARASI</label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+            <dt class="col-sm-2">
+                <label>İL</label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Province)
+            </dd>
+            <dt class="col-sm-2">
+                <label>İLÇE</label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.District)
+            </dd>
+            <dt class="col-sm-4">
+                <label></label>
+            </dt>
+            <dd class="col-sm-8">
+                <input type="submit" value="Sil" class="btn btn-danger" />
+
+            </dd>
+
+        </dl>
+
+
+        
+        <a asp-action="Index">Listeye Geri Dön</a>
+    </form>
+</div>

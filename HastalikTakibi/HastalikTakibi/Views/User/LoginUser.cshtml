@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LoginUser</title>
+
+    <style>
+        .body {
+            background-color: goldenrod
+        }
+        
+        .container {
+            text-align: center;
+            margin-top: 270px;
+            background-color:antiquewhite;
+        }
+        .Login {
+            text-align: center;
+            
+        }
+        .input{
+            font-size:larger;
+        }
+        .label{
+            margin-left:5px;
+        }
+        .button {
+            text-align: center;
+            width: 120px;
+            height: 35px;
+            margin-left: 60px;
+        }
+    </style>
+
+</head>
+<body class="body">
+
+    <form class="Form" action="/User/LoginUser" method="post">
+        <div class="container">
+            <h1>Login User</h1>
+        </div>
+        <div class="Login">
+            <label class="label">UserName</label>
+            <input type="text" name="UserName" id="UserName" class="input" /><br /><br />
+            <label class="label">Password</label>
+            <input type="password" name="Password" class="input" /><br /><br />
+            <input type="submit" value="GİRİŞ" class="button" />
+            @if (ViewBag.Error != null)
+            {
+                <div style="color:red">@ViewBag.Error</div>
+            }
+        </div>
+        
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿@model HastalikTakibi.Models.DiseaseVm
+
+@{
+    ViewData["Title"] = "DiseaseDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>Bunu silmek istediğinizden emin misiniz?</h3>
+<div>
+    <form asp-action="DiseaseDeleteConfirm">
+
+        <input value="@Model.Id" name="id" id="id" type="hidden" />
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">
+                <label>ID</label>
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-4">
+                <label>ADI</label>
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-4">
+                <label>İLK GÖRÜLME TARİHİ</label>
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.FirstSeenDate)
+            </dd>
+            <dt class="col-sm-4">
+                <label>KATEGORİLER</label>
+            </dt>
+            <dd class="col-sm-8">
+                <div>
+                    @foreach (SelectListItem item in ViewBag.DisaseCategoryList)
+                    {
+                        <label value="@item.Value">@item.Text</label>
+                        <br />
+                    }
+                </div>
+
+            </dd>
+
+            <dt class="col-sm-4">
+                <label></label>
+            </dt>
+            <dd class="col-sm-8">
+                <input type="submit" value="Sil" class="btn btn-danger" />
+
+            </dd>
+        </dl>
+    </form>
+    <a asp-action="Index">listeye geri dön</a>
+</div>

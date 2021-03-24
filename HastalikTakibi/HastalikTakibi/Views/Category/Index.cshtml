@@ -1,0 +1,62 @@
+﻿@model List<HastalikTakibi.DAL.Models.Database.Category>
+@{
+    ViewData["Title"] = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <script type = "text/javascript" language = "JavaScript"></script>
+   </head>
+   <body>
+       
+       <div class= "container">
+            <br/>
+            <div>
+                <div class="gridHeader"> Katgori Listesi </div>
+                <a class="btn btn-success btnAdd" href="/Category/CategoryAdd"> Ekle</a>
+                <table id="example" class="table table-strip table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th> id </th>
+
+                            <th> Name </th>
+
+                            <th>CreateTime </th>
+
+                            <th>LastUpdateTime </th>
+
+                            <th> Update </th>
+
+                            <th> Delete </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var category in Model)
+                        {
+
+                            <tr>
+
+                                <th> @category.Id </th>
+                                <td> @category.Name</td>
+                                <td> @category.CreateTime </td>
+                                <td> @category.LastUpdateTime </td>
+                                <td><a class="btn btn-success btnUpdate" href="/Category/CategoryUpdate/@category.Id" data - id="@category.Id">Güncelle </a></td>
+
+                                <td><a class="btn btn-danger btnDlete" href="/Category/CategoryDelete/@category.Id" data - id="@category.Id"> Sil </a></td>
+
+                            </tr>
+
+                        }
+                    </tbody>
+
+                </table>
+              
+            </div>
+    </div>
+       
+</body>
+</html>
+
+

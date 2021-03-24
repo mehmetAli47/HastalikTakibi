@@ -1,0 +1,61 @@
+﻿@model List<HastalikTakibi.DAL.Models.Database.Patient>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <div>
+        <a class="btn btn-success btnAdd" style="margin-left: -290px; width: 110px;" href="/Patient/PatientAdd">Ekle</a>
+        <p>Hasta listesi</p>
+
+    </div>
+    
+    <table class=" table table table-striped"style="margin-left:-320px;width:160%">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>T.C</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Address</th>
+                <th>E-Mail</th>
+                <th>Phone</th>
+                <th>Province</th>
+                <th>District</th>
+                <th>CreateTime </th>
+                <th>Last Update Time </th>
+                <th>Update </th>
+                <th>Delete </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var patient in Model)
+            {
+            <tr>
+                <th>@patient.Id</th> 
+                <th>@patient.TC</th>
+                <td><a class=" patintList" href="/Patient/PatientInformation/@patient.Id" data-id="@patient.Id">@patient.Name</a></td>
+                <td>@patient.Surname</td>
+                <td>@patient.Address</td>
+                <td>@patient.EMail</td>
+                <td>@patient.Phone</td>
+                <td>@patient.Province</td>
+                <td>@patient.District</td>
+                <td>@patient.CreateTime</td>
+                <td>@patient.LastUpdateTime</td>
+                <td><a class="btn btn-success btnUpdate" href="/Patient/PatientUpdate/@patient.Id" data-id="@patient.Id">Güncelle </a></td>
+
+                <td><a class="btn btn-success btnUpdate" href="/Patient/PatientDelete/@patient.Id" data-id="@patient.Id">sil </a></td>
+
+                
+
+            </tr>
+            }
+        </tbody>
+
+
+    </table>
+</div>

@@ -1,0 +1,153 @@
+﻿@model HastalikTakibi.Models.DiseaseVm
+
+@{
+    ViewData["Title"] = "DiseaseAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    .tableName {
+        text-align: center;
+    }
+
+    .DiseaseAdd {
+        margin: 50px;
+        width: 100%;
+    }
+</style>
+<h3 class="tableName">Hastalık Ekleme</h3>
+<div class="row">
+    <form class="DiseaseAdd" method="post">
+
+        <div class="form-group">
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <label> ADI</label>
+                </div>
+                <!-- /.col-sm-6 -->
+                <div class="col-sm-8">
+                    <input class="form-control" id="Name" name="Name" />
+                </div>
+                <!-- /.col-sm-6 -->
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label> İLK GÖRÜLME TARİHİ</label>
+                </div>
+                <!-- /.col-sm-6 -->
+                <div class="col-sm-8">
+                    <input class="form-control" name="FirstSeenDate" id="FirstSeenDate" type="datetime-local" />
+                </div>
+                <!-- /.col-sm-6 -->
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label> SİSTEMDEKİ KATEGORİLER</label>
+                </div>
+                <!-- /.col-sm-6 -->
+                <div class="col-sm-8">
+                    <select class="form-control" name="CategoryList" id="CategoryList">
+                        <option selected value="">seçiniz</option>
+                        @foreach (SelectListItem item in ViewBag.CategoryList)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+
+                        }
+                    </select>
+                </div>
+                <!-- /.col-sm-6 -->
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label></label>
+                </div>
+                <!-- /.col-sm-6 -->
+                <div class="col-sm-8">
+                    <button  class="btn btn-success" type="button" id="btnAdd"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-danger" type="button" id="btnRemove"><i class="fa fa-trash"></i></button>
+                </div>
+                <!-- /.col-sm-6 -->
+            </div>
+
+
+
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label>SEÇİLEN KATEGORİLER</label>
+                </div>
+                <!-- /.col-sm-6 -->
+                <div class="col-sm-8">
+                    <select class="form-control" name="CategoryIdList" id="CategoryIdList" style="min-height:100px" multiple>
+                    </select>
+                </div>
+                <!-- /.col-sm-6 -->
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4">
+                </div>
+                <!-- /.col-sm-6 -->
+                <div class="col-sm-8">
+                    <input style=" width: 150px; " id="btnSbmit" type="submit" value="Ekle" class="btn btn-primary" />
+                </div>
+                <!-- /.col-sm-6 -->
+            </div>
+
+        </div>
+    </form>
+</div>
+<div>
+    <a asp-action="Index" style="margin-left:35%">listeye geri dön</a>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#btnAdd').click(function () {
+
+            var selectedCategoryId = $('#CategoryList option:selected').val();
+            var selectedCategoryName = $('#CategoryList option:selected').text();
+            if (selectedCategoryId != "") {
+                var options = $("#CategoryIdList option");
+                var found = false;
+                for (var i = 0; i < options.length; i++) {
+                    if ($(options).eq(i).val() == selectedCategoryId) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                    $("#CategoryIdList").append(new Option(selectedCategoryName, selectedCategoryId));
+                else
+                    alert("Bu kategori zaten eklidir");
+
+            }
+
+        });
+
+        $('#btnRemove').click(function () {
+            $('#CategoryIdList option:selected').remove();
+        });
+
+        $('#btnSbmit').click(function () {
+            $('#CategoryIdList option').prop('selected', true);
+        });
+    });
+</script>

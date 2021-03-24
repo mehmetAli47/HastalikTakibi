@@ -1,0 +1,55 @@
+﻿@model List<HastalikTakibi.DAL.Models.Database.DiseaseView>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    
+    <script type="text/javascript" language="JavaScript"></script>
+</head>
+<style>
+    
+</style>
+<body>
+    <div class="container">
+        <div>
+            <div class="gridHeader">Hastalık Listesi</div>
+            <a class="btn btn-success btnAdd" href="/Disease/DiseaseAdd">Ekle</a>
+            <table id="example" class="table table-strip table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Hastalık Kategorisi </th>
+                        <th>First Seen Date</th>
+                        <th>CreateTime </th>
+                        <th>Last Update Time </th>
+                        <th>Update </th>
+                        <th>Delete </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var disease in Model)
+                    {
+                    <tr>
+                        <th>@disease.Id</th>
+                        <td>@disease.Name</td>
+                        <td>@disease.Category</td>
+                        <td>@disease.FirstSeenDate</td>
+                        <td>@disease.CreateTime</td>
+                        <td>@disease.LastUpdateTime</td>
+                        <td><a class="btn btn-success btnUpdate" href="/Disease/DiseaseUpdate/@disease.Id" data - id="@disease.Id">Güncelle </a></td>
+
+                        <td><a class="btn btn-danger btnDlete" href="/Disease/DiseaseDelete/@disease.Id" data - id="@disease.Id"> Sil </a></td>
+
+                    </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</body>
+

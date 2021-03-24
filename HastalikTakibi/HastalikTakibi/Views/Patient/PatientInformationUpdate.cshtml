@@ -1,0 +1,243 @@
+﻿@model HastalikTakibi.Models.PatientInformationVM
+
+@{
+    ViewData["Title"] = "PatientInformationUpdate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS7tMz6_QfeyN1rDuaHnYHGSm8ZinK_XE&callback=initMap&libraries=&v=weekly"
+        async></script>
+<body style="background-color:beige;">
+    <div style="width:1500px; margin-left:-255px;">
+        <h3 style=" color: #ff9030; text-align: center; border: solid 2px black; margin-top: 2px; background-color: green; height: 45px;">HASTA BİLGİSİ GÜNCELLEME </h3>
+        <form class="PatientInformationUpdate" method="post" style=" margin-top: 20px;  background-color: beige; width: 1455px;">
+            @Html.HiddenFor(a => a.Latitude)
+            @Html.HiddenFor(a => a.Longitude)
+
+            <input type="hidden" id="PatientId" name="PatientId" value="@Model.PatientId" />
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Kategori Seç </label>
+                    </div>
+                    <div class="col-sm-8">
+
+                        <select class="form-control" name="CategoryId" id="CategoryId">
+                            @foreach (SelectListItem item in ViewBag.CategoryList)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Hastalık Seç</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select class="form-control" name="DiseaseId" id="DiseaseId">
+                            @foreach (SelectListItem item in ViewBag.DiseaseList)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Hastalandığı zaman</label>
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(a => a.WhenIll, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control",@placeholder= "DateTime" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="row">
+
+                    <div class="col-sm-4">
+                        <label>İyileştiği zaman</label>
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(a => a.RecoveryTime, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control",@placeholder="DateTime" })
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Hastalandığı il</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select class="form-control" name="ProvinceId" id="ProvinceId">
+                            @foreach (SelectListItem item in ViewBag.ProvinceList)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Hastalandığı ilçe</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select class="form-control" name="DistrictId" id="DistrictId">
+                            @foreach (SelectListItem item in ViewBag.DistrictList)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+
+                        <label>Hastlığa Yakalanma Yeri</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="map" style="height:400px;width:100%;"></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Belirtileri</label>
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextAreaFor(a => a.Symptoms, new { @class = "form-control", @cols = "50", @rows = "5" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input style=" width: 150px; " id="btnSbmit" type="submit" value="Güncelle" class="btn btn-primary" />
+                      
+                    </div>
+                </div>
+               
+            </div>
+
+        </form>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+
+
+
+        $('#CategoryId').change(function () {
+            var categoryId = $('#CategoryId').val();
+            changeCategory(categoryId);
+
+        });
+
+
+
+        $('#ProvinceId').change(function () {
+            var provinceId = $('#ProvinceId').val();
+
+            changeProvince(provinceId);
+
+        });
+        function changeProvince(provinceId) {
+            console.log("province id=" + provinceId);
+            $('#ProvinceId').val(provinceId);
+            $.ajax({
+                url: '/Patient/GetDistrictByProvinceId',
+                data: { provinceId: provinceId },
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    $('#DistrictId').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#DistrictId').append("<option value='" + data[i].Id + "'>" + data[i].Text + "</option>");
+                    }
+
+                    var districtId = '@Model.DistrictId';
+                    $('#DistrictId').val(districtId);
+                }
+            });
+        }
+        function changeCategory(categoryId) {
+            console.log("category id=" + categoryId);
+            $('#CategoryId').val(categoryId);
+            $.ajax({
+                url: '/Patient/GetDiseasByCategoryId',
+                data: { categoryId: categoryId },
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    $('#DiseaseId').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#DiseaseId').append("<option value='" + data[i].Id + "'>" + data[i].Text + "</option>");
+                    }
+
+                    var diseseId = '@Model.DiseaseId';
+                    $('#DiseaseId').val(diseseId);
+                }
+            });
+        }
+
+
+          var categoryIdOld = '@Model.CategoryId';
+        changeCategory(categoryIdOld);
+
+        var provinceIdOld = '@Model.ProvinceId';
+        changeProvince(provinceIdOld);
+    });
+
+    var lat = parseFloat('@Model.Latitude.ToString().Replace(",",".")');
+    var lon = parseFloat('@Model.Longitude.ToString().Replace(",", ".")');
+
+    let map;
+    var marker;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: lat, lng: lon },
+            zoom: 12,
+        });
+
+        marker = new google.maps.Marker({
+            position: map.getCenter(),
+            map: map,
+            draggable: true
+        });
+        $("#Latitude").val(marker.position.lat().toString().replace('.', ','));
+        $("#Longitude").val(marker.position.lng().toString().replace('.', ','));
+
+        google.maps.event.addListener(map, 'click', function (e) {
+            marker.setPosition(e.latLng);
+
+            $("#Latitude").val(e.latLng.lat().toString().replace('.', ','));
+            $("#Longitude").val(e.latLng.lng().toString().replace('.', ','));
+        });
+    }
+</script>
