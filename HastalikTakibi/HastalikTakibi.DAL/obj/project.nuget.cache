@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4RmUcCidl/E18BrCijHYv2ifiMnlgMYzmcWnsiQACinp1tuzuQRwEHyhfyKyWNSHITTqKFSgD/OGOT2Zcfqyxg==",
+  "dgSpecHash": "TKfEN2IFWvgin3/iM9a5Ju9QL7fyvPKEpYSDPSK1FtrbyKKU02ez/KENLeOOLiMUG3g+G2ZGrakyJ54YIGDB7Q==",
   "success": true,
-  "projectFilePath": "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi.DAL\\HastalikTakibi.DAL.csproj",
+  "projectFilePath": "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.DAL\\HastalikTakibi.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mehme\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.2\\microsoft.entityframeworkcore.5.0.2.nupkg.sha512",
     "C:\\Users\\mehme\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.2\\microsoft.entityframeworkcore.abstractions.5.0.2.nupkg.sha512",

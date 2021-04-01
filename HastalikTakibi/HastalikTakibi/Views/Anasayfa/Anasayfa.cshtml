@@ -1,5 +1,22 @@
-﻿@{
+﻿@model HastalikTakibi.Models.User
+@using Microsoft.AspNetCore.Http;
+@{
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 
-<div>Anasayfa</div>
+
+<div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.DisplayName(Model.UserName)
+        </div>
+
+        <div class="col-md-8">
+            @Html.DisplayName(Model.Password)
+        </div>
+        @if (ViewBag.Error != null)
+        {
+            <div style="color:red">@ViewBag.Error</div>
+        }
+    </div>
+</div>

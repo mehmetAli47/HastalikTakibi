@@ -1,7 +1,9 @@
 ﻿using HastalikTakibi.DAL;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,22 @@ namespace HastalikTakibi.Controllers
         {
             _hastlikTakipDbContext = hastlikTakipDbContext;
         }
+
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            Models.User usersession = null;
+            try
+            {
+                usersession = JsonConvert.DeserializeObject<Models.User>(HttpContext.Session.GetString("SessionUser"));
+            }
+            catch { }
+            if(usersession==null)
+            {
+                context.Result = RedirectToAction("LoginUser", "User");
+            }
+            else
+            base.OnActionExecuting(context);
+        }
         public override void OnActionExecuted(ActionExecutedContext context)
         {
             base.OnActionExecuted(context);
@@ -27,6 +45,8 @@ namespace HastalikTakibi.Controllers
                                               Text = c.Name
 
                                           }).ToList();
+
+            
         }
     }
 }

@@ -105,9 +105,11 @@ namespace HastalikTakibi.Controllers
         public IActionResult PatientInformation(int id )
         {
             ViewBag.PatientId = id;
-            var patientName = _hastlikTakipDbContext.Patient.FirstOrDefault(a => a.Id==id);
-            ViewBag.PatientName = patientName.Name+"   " + patientName.Surname +"   " + patientName.TC; 
-           var patientinformationList = (from p in _hastlikTakipDbContext.PatientInformationView
+            var patient = _hastlikTakipDbContext.Patient.FirstOrDefault(a => a.Id==id);
+            ViewBag.PatientName = patient.Name;
+            ViewBag.PatientSurname = patient.Surname;
+            ViewBag.PatientTc = patient.TC;
+            var patientinformationList = (from p in _hastlikTakipDbContext.PatientInformationView
                                       join d in _hastlikTakipDbContext.Disease on p.DiseaseId  equals d.Id
                                       where p.PatientId == id
                                       select p).ToList();
@@ -239,21 +241,20 @@ namespace HastalikTakibi.Controllers
         }
         public IActionResult PatientInformationDelete( int id)
         {
-            var information = _hastlikTakipDbContext.PatientInformation.Where(a => a.Id == id).Select(a => new HastalikTakibi.Models.PatientInformationVM()
+            var information = _hastlikTakipDbContext.PatientInformationView.Where(a => a.Id == id).Select(a => new HastalikTakibi.Models.PatientInformationViewM()
             {
                 Id = a.Id,
-                CategoryId=a.CategoryId,
-                DiseaseId=a.DiseaseId,
-                DistrictId=a.DistrictId,
-                Latitude=a.Latitude,
-                Longitude=a.Longitude,
-                PatientId=a.PatientId,
-                ProvinceId=a.ProvinceId,
-                RecoveryTime=a.RecoveryTime,
-                Symptoms=a.Symptoms,
-                WhenIll=(DateTime)a.WhenIll
-                });
-            return View();
+                PatientId = a.PatientId,
+                DiseaseId = a.DiseaseId,
+                DiseaseName = a.DiseaseName,
+                PatientName = a.PatientName,
+                RecoveryTime = a.RecoveryTime,
+                DistrictName = a.DistrictName,
+                ProvinceName = a.ProvinceName,
+                Symptoms = a.Symptoms,
+                WhenIll = a.WhenIll
+            }).FirstOrDefault();
+            return View(information);
         }
         [HttpPost]
         public IActionResult PatientInformationDeleteConfirm(int id)

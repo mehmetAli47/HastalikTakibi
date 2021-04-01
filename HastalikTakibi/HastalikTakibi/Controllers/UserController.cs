@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using HastalikTakibi.DAL;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace HastalikTakibi.Controllers
 {
@@ -21,6 +22,7 @@ namespace HastalikTakibi.Controllers
         }
         public IActionResult LoginUser()
         {
+           
             return View();
         }
         [HttpPost]
@@ -28,8 +30,11 @@ namespace HastalikTakibi.Controllers
         {
             var taskUser = _hastlikTakipDbContext.User.Where(a => a.username == user.UserName && a.password == user.Password).FirstOrDefaultAsync();
             var userDb = taskUser.GetAwaiter().GetResult();
-
-            //var userDb =await _hastlikTakipDbContext.User.Where(a => a.username==user.UserName && a.password==user.Password).FirstOrDefaultAsync();
+            var username = userDb.username;
+            var password = userDb.password;
+            var usersesion = new User() { UserName = username };      
+             
+            HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(usersesion));    
 
             if (userDb != null)
             {

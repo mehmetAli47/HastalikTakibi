@@ -40,7 +40,6 @@
 
 </head>
 <body class="body">
-
     <form class="Form" action="/User/LoginUser" method="post">
         <div class="container">
             <h1>Login User</h1>
@@ -51,10 +50,7 @@
             <label class="label">Password</label>
             <input type="password" name="Password" class="input" /><br /><br />
             <input type="submit" value="GİRİŞ" class="button" />
-            @if (ViewBag.Error != null)
-            {
-                <div style="color:red">@ViewBag.Error</div>
-            }
+           
         </div>
         
     </form>

@@ -1,7 +1,8 @@
 ﻿using HastalikTakibi.DAL;
+using HastalikTakibi.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-
+using Newtonsoft.Json;
 namespace HastalikTakibi.Controllers
 {
     public class AnasayfaController : AdminBaseController
@@ -12,7 +13,13 @@ namespace HastalikTakibi.Controllers
 
         public IActionResult Anasayfa()
         {
-            return View();
+            User usersession=null;
+            try
+            {
+                usersession = JsonConvert.DeserializeObject<Models.User>(HttpContext.Session.GetString("SessionUser"));
+            }
+            catch{ } 
+                return View(usersession);
         }
         
         public IActionResult Covid()

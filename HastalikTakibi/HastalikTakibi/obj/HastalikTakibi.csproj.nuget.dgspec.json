@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.csproj": {}
+    "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.csproj": {}
   },
   "projects": {
-    "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi.DAL\\HastalikTakibi.DAL.csproj": {
+    "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.DAL\\HastalikTakibi.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi.DAL\\HastalikTakibi.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.DAL\\HastalikTakibi.DAL.csproj",
         "projectName": "HastalikTakibi.DAL",
-        "projectPath": "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi.DAL\\HastalikTakibi.DAL.csproj",
+        "projectPath": "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.DAL\\HastalikTakibi.DAL.csproj",
         "packagesPath": "C:\\Users\\mehme\\.nuget\\packages\\",
-        "outputPath": "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi.DAL\\obj\\",
+        "outputPath": "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mehme\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -72,14 +72,14 @@
         }
       }
     },
-    "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.csproj": {
+    "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.csproj",
+        "projectUniqueName": "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.csproj",
         "projectName": "HastalikTakibi",
-        "projectPath": "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.csproj",
+        "projectPath": "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.csproj",
         "packagesPath": "C:\\Users\\mehme\\.nuget\\packages\\",
-        "outputPath": "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi\\obj\\",
+        "outputPath": "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mehme\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -96,8 +96,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi.DAL\\HastalikTakibi.DAL.csproj": {
-                "projectPath": "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi.DAL\\HastalikTakibi.DAL.csproj"
+              "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.DAL\\HastalikTakibi.DAL.csproj": {
+                "projectPath": "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.DAL\\HastalikTakibi.DAL.csproj"
               }
             }
           }

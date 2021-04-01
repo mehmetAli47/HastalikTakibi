@@ -23,5 +23,9 @@ namespace HastalikTakibi.DAL.Models.Database
         [Column("password")]
         public string password { get; set; }
 
+        public object GetAwaiter()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

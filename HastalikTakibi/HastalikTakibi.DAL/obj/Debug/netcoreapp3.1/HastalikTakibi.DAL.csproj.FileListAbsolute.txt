@@ -7,3 +7,12 @@ E:\BELGELER\projects\HastalikTakibi\HastalikTakibi.DAL\obj\Debug\netcoreapp3.1\H
 E:\BELGELER\projects\HastalikTakibi\HastalikTakibi.DAL\obj\Debug\netcoreapp3.1\HastalikTakibi.DAL.dll
 E:\BELGELER\projects\HastalikTakibi\HastalikTakibi.DAL\obj\Debug\netcoreapp3.1\HastalikTakibi.DAL.pdb
 E:\BELGELER\projects\HastalikTakibi\HastalikTakibi.DAL\obj\Debug\netcoreapp3.1\HastalikTakibi.DAL.csprojAssemblyReference.cache
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi.DAL\bin\Debug\netcoreapp3.1\HastalikTakibi.DAL.deps.json
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi.DAL\bin\Debug\netcoreapp3.1\HastalikTakibi.DAL.dll
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi.DAL\bin\Debug\netcoreapp3.1\HastalikTakibi.DAL.pdb
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi.DAL\obj\Debug\netcoreapp3.1\HastalikTakibi.DAL.csprojAssemblyReference.cache
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi.DAL\obj\Debug\netcoreapp3.1\HastalikTakibi.DAL.AssemblyInfoInputs.cache
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi.DAL\obj\Debug\netcoreapp3.1\HastalikTakibi.DAL.AssemblyInfo.cs
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi.DAL\obj\Debug\netcoreapp3.1\HastalikTakibi.DAL.csproj.CoreCompileInputs.cache
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi.DAL\obj\Debug\netcoreapp3.1\HastalikTakibi.DAL.dll
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi.DAL\obj\Debug\netcoreapp3.1\HastalikTakibi.DAL.pdb

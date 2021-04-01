@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p9D6kNH+kNolvnoDNKrChfhyLGTD8TTMaYqSX9CA4F3VTwPUmHciz5jRBrMMSYdRnX1nsr4tFNKDzLkwmEzLOw==",
+  "dgSpecHash": "tLr8YGMdfkgOWOt5rBRgQOJ9HC5s4tiJR9vH2K2Xs3Y+RLU1N1PoxK4XeWx4vLpgvxXB7gTW9/TfMy2FfW1Saw==",
   "success": true,
-  "projectFilePath": "E:\\BELGELER\\projects\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.csproj",
+  "projectFilePath": "C:\\Users\\mehme\\Documents\\GitHub\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi\\HastalikTakibi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mehme\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\mehme\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\2.2.0\\microsoft.aspnetcore.cryptography.internal.2.2.0.nupkg.sha512",
