@@ -1,0 +1,24 @@
+﻿body {
+    
+}
+.info  {
+    font-size: 22px;
+    margin: 3px 10px 3px 10px;
+}
+    .info a {
+        text-decoration: none;
+    }
+        .info a:hover {
+          color: white;
+        }
+.d-block {
+    color: black;
+    
+}
+nav.main-header.navbar.navbar-expand.navbar-white.navbar-light {
+    background: #3c8dbc;
+}
+section.content {
+    overflow-x: scroll;
+    height: 823px;
+}

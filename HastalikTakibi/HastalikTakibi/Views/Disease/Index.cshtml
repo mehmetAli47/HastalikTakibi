@@ -11,11 +11,11 @@
     
 </style>
 <body>
-    <div class="container">
+    <div class="container" style=" max-width: initial;">
         <div>
-            <div class="gridHeader">Hastalık Listesi</div>
-            <a class="btn btn-success btnAdd" href="/Disease/DiseaseAdd">Ekle</a>
-            <table id="example" class="table table-strip table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+            <h3 style=" color: #ff9030; text-align: center; border: solid 2px black; margin-top: 2px; background-color: green; height: 45px; width: 1520px;">Hastalık Listesi</h3>
+            <a class="btn btn-success btnAdd" href="/Disease/DiseaseAdd" style="max-width:100%;">Yeni Hastalık Ekle</a>
+            <table id="example" class="table table-strip table-bordered dt-responsive nowrap" style="margin-top:10px; width:100%;" cellspacing="0">
                 <thead>
                     <tr>
                         <th>id</th>
@@ -32,18 +32,18 @@
                 <tbody>
                     @foreach (var disease in Model)
                     {
-                    <tr>
-                        <th>@disease.Id</th>
-                        <td>@disease.Name</td>
-                        <td>@disease.Category</td>
-                        <td>@disease.FirstSeenDate</td>
-                        <td>@disease.CreateTime</td>
-                        <td>@disease.LastUpdateTime</td>
-                        <td><a class="btn btn-success btnUpdate" href="/Disease/DiseaseUpdate/@disease.Id" data - id="@disease.Id">Güncelle </a></td>
+                        <tr>
+                            <th>@disease.Id</th>
+                            <td>@disease.Name</td>
+                            <td>@disease.Category</td>
+                            <td>@disease.FirstSeenDate</td>
+                            <td>@disease.CreateTime</td>
+                            <td>@disease.LastUpdateTime</td>
+                            <td><a class="btn btn-success btnUpdate" href="/Disease/DiseaseUpdate/@disease.Id" data - id="@disease.Id">Güncelle </a></td>
 
-                        <td><a class="btn btn-danger btnDlete" href="/Disease/DiseaseDelete/@disease.Id" data - id="@disease.Id"> Sil </a></td>
+                            <td><a class="btn btn-danger btnDlete" href="/Disease/DiseaseDelete/@disease.Id" data - id="@disease.Id"> Sil </a></td>
 
-                    </tr>
+                        </tr>
                     }
                 </tbody>
 

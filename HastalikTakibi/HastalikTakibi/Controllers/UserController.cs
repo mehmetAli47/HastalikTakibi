@@ -30,14 +30,13 @@ namespace HastalikTakibi.Controllers
         {
             var taskUser = _hastlikTakipDbContext.User.Where(a => a.username == user.UserName && a.password == user.Password).FirstOrDefaultAsync();
             var userDb = taskUser.GetAwaiter().GetResult();
-            var username = userDb.username;
-            var password = userDb.password;
-            var usersesion = new User() { UserName = username };      
-             
-            HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(usersesion));    
+            
 
             if (userDb != null)
             {
+                var username = userDb.username;
+                var usersesion = new User() { UserName = username, Name = userDb.name, SurName = userDb.surname };
+                HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(usersesion));
                 //return to admin mangement
                 return RedirectToAction("Anasayfa", "Anasayfa");
             }

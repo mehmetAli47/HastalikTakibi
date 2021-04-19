@@ -6,14 +6,13 @@
 
 
 
-<div class="container">
+<div class="container" style=" max-width: 100%;">
+    <div class="header" style=" color: #ff9030; text-align: center; border: solid 2px black; margin-top: 2px; background-color: green; height: 45px; width: 1520px;"> <h3>Hasta Listesi</h3></div>
     <div>
-        <a class="btn btn-success btnAdd" style="margin-left: -290px; width: 110px;" href="/Patient/PatientAdd">Ekle</a>
-        <p>Hasta listesi</p>
-
+        <a class="btn btn-success btnAdd" href="/Patient/PatientAdd" style="margin-top:5px;">Yeni Hasta Ekle</a>
     </div>
     
-    <table class=" table table table-striped"style="margin-left:-320px;width:160%">
+    <table class=" table table table-striped" style="margin-top:15px;"> 
         <thead>
             <tr>
                 <th>id</th>
@@ -37,7 +36,7 @@
             <tr>
                 <th>@patient.Id</th> 
                 <th>@patient.TC</th>
-                <td><a class=" patintList" href="/Patient/PatientInformation/@patient.Id" data-id="@patient.Id">@patient.Name</a></td>
+                <td><a class="patintList" href="/Patient/PatientInformation/@patient.Id" data-id="@patient.Id">@patient.Name</a></td>
                 <td>@patient.Surname</td>
                 <td>@patient.Address</td>
                 <td>@patient.EMail</td>

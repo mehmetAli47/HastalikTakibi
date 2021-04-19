@@ -1,0 +1,20 @@
+﻿body {
+}
+.menu{
+
+}
+.leftmenu {
+    float: left;
+    border: 1px solid;
+    list-style: none;
+    border-radius: 15px;
+    width: 200px;
+    min-height: auto;
+    background-color: #f1f1f1;
+    font-weight: 600;
+    color: black;
+}
+.altmenu{
+
+}
+.

@@ -93,8 +93,7 @@ namespace HastalikTakibi.Controllers
             ViewBag.ProvinceList = provinceList;
             return firstId;
         }
-        
-        
+
         public IActionResult Index()
         {
             var patientList = _hastlikTakipDbContext.Patient.ToList();
@@ -102,10 +101,13 @@ namespace HastalikTakibi.Controllers
             return View( patientList);
         }
 
-        public IActionResult PatientInformation(int id )
+        public IActionResult PatientInformation(int id)
         {
+            var contenxt = HttpContext;
             ViewBag.PatientId = id;
             var patient = _hastlikTakipDbContext.Patient.FirstOrDefault(a => a.Id==id);
+            if (patient == null)
+                return NotFound();
             ViewBag.PatientName = patient.Name;
             ViewBag.PatientSurname = patient.Surname;
             ViewBag.PatientTc = patient.TC;
@@ -113,9 +115,6 @@ namespace HastalikTakibi.Controllers
                                       join d in _hastlikTakipDbContext.Disease on p.DiseaseId  equals d.Id
                                       where p.PatientId == id
                                       select p).ToList();
-                
-               
-
             return View(patientinformationList);
         }
        
@@ -123,8 +122,7 @@ namespace HastalikTakibi.Controllers
         {
             return View();
         }
-       
-     
+ 
 
         [HttpPost]
         public JsonResult GetDiseasByCategoryId(int categoryId)

@@ -11,49 +11,62 @@
     <title>LoginUser</title>
 
     <style>
-        .body {
-            background-color: goldenrod
-        }
-        
         .container {
+            border: 1px solid;
+            max-width: 360px;
+            margin: auto;
+            padding: 25px;
+            margin-top: 200px;
+            height: 400px;
+            background: wheat;
+            font-size: 25px;
+        }
+       
+
+        .logo {
             text-align: center;
-            margin-top: 270px;
-            background-color:antiquewhite;
+            background-color: beige;
+            font-size: 30px;
+            font-family: cursive;
         }
-        .Login {
-            text-align: center;
-            
-        }
-        .input{
-            font-size:larger;
-        }
-        .label{
-            margin-left:5px;
+        .label {
+            font-size:25px;
         }
         .button {
-            text-align: center;
-            width: 120px;
+            width: 100px;
             height: 35px;
-            margin-left: 60px;
+            display: block;
+            margin-left: 220px;
+            margin-top: 30px;
+            background-color: #71e0e0;
         }
+            .button:hover {
+                background-color: #eae4e4;
+            }
     </style>
 
 </head>
-<body class="body">
+<body class="body" style="background-color: #d2d6de;">
     <form class="Form" action="/User/LoginUser" method="post">
         <div class="container">
-            <h1>Login User</h1>
+            <div class="logo">
+                <h1>GİRİŞ</h1>
+            </div>
+            <div class="Login">
+                <label class="label">Kullanıcı Adı:</label>
+                <input type="text" name="UserName" id="UserName"placeholder="Kullanıcı Adı" style=" height: 25px;" />
+                <label class="label">Şifre:</label>
+                <input type="password" name="Password" placeholder="Şifre" style=" margin-left: 87px; height: 25px; margin-top: 10px;" />
+            </div>
+            <div>
+                <input type="submit" value="GİRİŞ" class="button" />
+            </div>
+            <div class="erorr" style="color:red;">
+                @ViewBag.Error
+            </div>
+            
         </div>
-        <div class="Login">
-            <label class="label">UserName</label>
-            <input type="text" name="UserName" id="UserName" class="input" /><br /><br />
-            <label class="label">Password</label>
-            <input type="password" name="Password" class="input" /><br /><br />
-            <input type="submit" value="GİRİŞ" class="button" />
-           
-        </div>
-        
-    </form>
-
+</form>
+  
 </body>
 </html>

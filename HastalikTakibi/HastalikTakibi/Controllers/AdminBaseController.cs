@@ -14,6 +14,7 @@ namespace HastalikTakibi.Controllers
     public class AdminBaseController : Controller
     {
        protected  HastlikTakipDbContext _hastlikTakipDbContext;
+        Models.User usersession = null;
         public AdminBaseController(HastlikTakipDbContext hastlikTakipDbContext)
         {
             _hastlikTakipDbContext = hastlikTakipDbContext;
@@ -21,18 +22,25 @@ namespace HastalikTakibi.Controllers
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            Models.User usersession = null;
+
             try
             {
                 usersession = JsonConvert.DeserializeObject<Models.User>(HttpContext.Session.GetString("SessionUser"));
+
             }
             catch { }
-            if(usersession==null)
+
+
+            if (usersession == null)
             {
                 context.Result = RedirectToAction("LoginUser", "User");
             }
             else
-            base.OnActionExecuting(context);
+            {
+
+                base.OnActionExecuting(context);
+            }
+
         }
         public override void OnActionExecuted(ActionExecutedContext context)
         {
@@ -46,7 +54,10 @@ namespace HastalikTakibi.Controllers
 
                                           }).ToList();
 
-            
+            ViewBag.Surname = usersession.SurName;
+            ViewBag.Name = usersession.Name;
+           
+
         }
     }
 }

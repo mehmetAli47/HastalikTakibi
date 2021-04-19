@@ -7,36 +7,40 @@
 <head>
 
 </head>
-<body  style="background-color:beige;">
-    <div class="container" style="width:1500px; margin-left:-255px;">
-        <div>
-            <h4 style="color: #ff9030; text-align: center;border: solid 2px black; margin-top: 2px; background-color: green;height: 45px; width: 1520px;">Hasta Bilgisi</h4>
-            <div class="row">
-                <div class="col-md-4"><a class="btn btn-success btnAdd" style="margin-top:5px;" href="/Patient/PatientInformationAdd/@ViewBag.PatientId">Yeni Hastalık ekle </a></div>
-                <div class="col-md-8" style="margin-left: -190px; font-size: xx-large;">@ViewBag.PatientTc</div>
-                <div class="col-md-8" style="margin-left: 190px; font-size: xx-large;">@ViewBag.PatientName @ViewBag.PatientSurname</div>
-                
+<body style="background-color:beige;">
+
+    <div>
+        <h4 style="color: #ff9030; text-align: center;border: solid 2px black; margin-top: 2px; background-color: green;height: 45px; width: 1520px;">Hasta Bilgisi</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <a class="btn btn-success btnAdd" style="margin-top:5px; float:left;" href="/Patient/PatientInformationAdd/@ViewBag.PatientId">Yeni Hastalık ekle</a>
+                <div class="userinfo" style=" font-size: x-large; display: block; background-color: #f4f6f9; margin-left: 155px; padding: inherit;">
+                    @ViewBag.PatientName @ViewBag.PatientSurname @ViewBag.PatientTC
+                </div>
             </div>
-            
+
 
         </div>
-        <table id=" example" class="table table-danger"style=" margin-top: 20px;  background-color: beige; width: 1455px;">
-            <thead>
-                <tr>
-                    <th> Id</th>
-                    <th> Hastalık Adı</th>
-                    <th> Hastalanma zamanı</th>
-                    <th> İyileşme zamanı</th>
-                    <th> Hatalandığı il</th>
-                    <th> Hastalandıgı ilçe</th>
-                    <th> Belirtiler</th>
-                    <th> Güncelle</th>
-                    <th> Sil</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var information in Model)
-                {
+
+
+    </div>
+    <table id=" example" class=" table table table-striped" style="background-color: #f4f6f9;">
+        <thead>
+            <tr>
+                <th> Id</th>
+                <th> Hastalık Adı</th>
+                <th> Hastalanma zamanı</th>
+                <th> İyileşme zamanı</th>
+                <th> Hatalandığı il</th>
+                <th> Hastalandıgı ilçe</th>
+                <th> Belirtiler</th>
+                <th> Güncelle</th>
+                <th> Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var information in Model)
+            {
                 <tr>
                     <th>@information.Id</th>
                     <td>@information.DiseaseName</td>
@@ -48,10 +52,9 @@
                     <td><a class="btn btn-success btnUpdate" href="/Patient/PatientInformationUpdate/@information.Id" data-id="@information.Id">Güncelle </a></td>
                     <td><a class="btn btn-success btnUpdate" href="/Patient/PatientInformationDelete/@information.Id" data-id="@information.Id">sil </a></td>
                 </tr>
-                }
+            }
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 
-    </div>
 </body>

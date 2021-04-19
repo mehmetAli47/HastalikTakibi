@@ -141,6 +141,14 @@ E:\BELGELER\projects\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTaki
 E:\BELGELER\projects\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.genruntimeconfig.cache
 E:\BELGELER\projects\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\Razor\Views\Patient\PatientInformationDelete.cshtml.g.cs
 E:\BELGELER\projects\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\Razor\Views\Patient\PatientInformationUpdate.cshtml.g.cs
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.csprojAssemblyReference.cache
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.AssemblyInfoInputs.cache
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.AssemblyInfo.cs
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.csproj.CoreCompileInputs.cache
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.RazorAssemblyInfo.cache
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.RazorAssemblyInfo.cs
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\appsettings.json
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\HastalikTakibi.exe
@@ -237,14 +245,6 @@ C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\HastalikTakibi.DAL.dll
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\HastalikTakibi.DAL.pdb
-C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.csprojAssemblyReference.cache
-C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.AssemblyInfoInputs.cache
-C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.AssemblyInfo.cs
-C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.csproj.CoreCompileInputs.cache
-C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.RazorAssemblyInfo.cache
-C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.RazorAssemblyInfo.cs
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\staticwebassets\HastalikTakibi.StaticWebAssets.Manifest.cache
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\staticwebassets\HastalikTakibi.StaticWebAssets.xml
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\scopedcss\bundle\HastalikTakibi.styles.css
@@ -266,6 +266,7 @@ C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\Razor\Views\Patient\PatientDelete.cshtml.g.cs
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\Razor\Views\Patient\PatientInformation.cshtml.g.cs
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\Razor\Views\Patient\PatientInformationAdd.cshtml.g.cs
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\Razor\Views\Patient\PatientInformationDelete.cshtml.g.cs
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\Razor\Views\Patient\PatientInformationUpdate.cshtml.g.cs
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\Razor\Views\Patient\PatientUpdate.cshtml.g.cs
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
@@ -283,4 +284,7 @@ C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\ref\HastalikTakibi.dll
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.pdb
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.genruntimeconfig.cache
-C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\Razor\Views\Patient\PatientInformationDelete.cshtml.g.cs
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\Antlr3.Runtime.dll
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\System.Web.Optimization.dll
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\WebGrease.dll
