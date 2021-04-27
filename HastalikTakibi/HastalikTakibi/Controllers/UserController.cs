@@ -30,7 +30,6 @@ namespace HastalikTakibi.Controllers
         {
             var taskUser = _hastlikTakipDbContext.User.Where(a => a.username == user.UserName && a.password == user.Password).FirstOrDefaultAsync();
             var userDb = taskUser.GetAwaiter().GetResult();
-            
 
             if (userDb != null)
             {

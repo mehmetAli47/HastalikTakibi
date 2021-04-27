@@ -96,16 +96,27 @@ namespace HastalikTakibi.Controllers
 
         public IActionResult Index()
         {
-            var patientList = _hastlikTakipDbContext.Patient.ToList();
+            var patientList = _hastlikTakipDbContext.Patients.ToList();
 
             return View( patientList);
+        }
+        public IActionResult PatientExisting()
+        {
+            var patientexsiting = _hastlikTakipDbContext.PatientExistings.ToList();
+
+            return View(patientexsiting);
+        }
+        public IActionResult PatientRecovery()
+        {
+            var patientrecovery = _hastlikTakipDbContext.PatientRecoveries.ToList();
+            return View(patientrecovery);
         }
 
         public IActionResult PatientInformation(int id)
         {
             var contenxt = HttpContext;
             ViewBag.PatientId = id;
-            var patient = _hastlikTakipDbContext.Patient.FirstOrDefault(a => a.Id==id);
+            var patient = _hastlikTakipDbContext.Patients.FirstOrDefault(a => a.Id==id);
             if (patient == null)
                 return NotFound();
             ViewBag.PatientName = patient.Name;
@@ -174,7 +185,7 @@ namespace HastalikTakibi.Controllers
                 District=patient.District
             };
             
-            _hastlikTakipDbContext.Patient.Add(patientDb);
+            _hastlikTakipDbContext.Patients.Add(patientDb);
             _hastlikTakipDbContext.SaveChangesAsync().GetAwaiter().GetResult();
             return RedirectToAction("Index");
 
@@ -222,7 +233,7 @@ namespace HastalikTakibi.Controllers
         }
         public IActionResult PatientDelete(int id)
         {
-            var patient = _hastlikTakipDbContext.Patient.Where(a => a.Id == id).Select(a => new HastalikTakibi.Models.PatientVm()
+            var patient = _hastlikTakipDbContext.Patients.Where(a => a.Id == id).Select(a => new HastalikTakibi.Models.PatientVm()
             {
                 Id = a.Id,
                 Name = a.Name,
@@ -266,15 +277,15 @@ namespace HastalikTakibi.Controllers
         [HttpPost]
         public IActionResult PatientDeleteConfirm( int id)
         {
-            var patient = _hastlikTakipDbContext.Patient.FirstOrDefault( a =>a.Id==id);
-            _hastlikTakipDbContext.Patient.Remove(patient);
+            var patient = _hastlikTakipDbContext.Patients.FirstOrDefault( a =>a.Id==id);
+            _hastlikTakipDbContext.Patients.Remove(patient);
             _hastlikTakipDbContext.SaveChangesAsync().GetAwaiter().GetResult();
 
             return RedirectToAction("Index");       
         }
         public IActionResult PatientUpdate(int id)
         {
-            var patient = _hastlikTakipDbContext.Patient.Where(a => a.Id == id).Select(a => new HastalikTakibi.Models.PatientVm()
+            var patient = _hastlikTakipDbContext.Patients.Where(a => a.Id == id).Select(a => new HastalikTakibi.Models.PatientVm()
             {
                 Id = a.Id,
                 Name = a.Name,
@@ -293,7 +304,7 @@ namespace HastalikTakibi.Controllers
         [HttpPost]
         public IActionResult PatientUpdate(HastalikTakibi.Models.PatientVm patient)
         {
-            var patientDb = _hastlikTakipDbContext.Patient.Where(a => a.Id == patient.Id).FirstOrDefault();
+            var patientDb = _hastlikTakipDbContext.Patients.Where(a => a.Id == patient.Id).FirstOrDefault();
             if (patientDb == null)
             {
                 ViewBag.Error = "Hasta Bulunamadı";

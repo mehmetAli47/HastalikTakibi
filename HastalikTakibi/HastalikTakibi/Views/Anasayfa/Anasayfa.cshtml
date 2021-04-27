@@ -5,13 +5,44 @@
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 
-
-<div>
-    <div class="row">
-        <div class="col-md-4">
-            <h3>HOŞGELDİN @Html.DisplayName(Model.UserName)</h3>
-        </div>
-
-
-    </div>
-</div>
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css">
+    <style>
+        .map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+    <title>OpenLayers example</title>
+</head>
+<body>
+    <h2>My Map</h2>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+        var map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.XYZ({
+                        url: 'http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}'
+                    })
+                }), 
+                new ol.layer.Tile({
+                    source: new ol.source.TileWMS({
+                        url: 'http://localhost:8080/geoserver/ht/wms',
+                        params: { 'LAYERS': 'ht:disease_location_v', 'TILED': true, 'STYLES':'heatmap'},
+                        serverType:'geoserver'
+                    })
+                }),
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([32.64, 39.82]),
+                zoom: 7
+            })
+        });
+    </script>
+</body>
+</html>

@@ -3,58 +3,111 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/js/site.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <style>
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
 
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
 
-<div class="container" style=" max-width: 100%;">
-    <div class="header" style=" color: #ff9030; text-align: center; border: solid 2px black; margin-top: 2px; background-color: green; height: 45px; width: 1520px;"> <h3>Hasta Listesi</h3></div>
-    <div>
-        <a class="btn btn-success btnAdd" href="/Patient/PatientAdd" style="margin-top:5px;">Yeni Hasta Ekle</a>
-    </div>
-    
-    <table class=" table table table-striped" style="margin-top:15px;"> 
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>T.C</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Address</th>
-                <th>E-Mail</th>
-                <th>Phone</th>
-                <th>Province</th>
-                <th>District</th>
-                <th>CreateTime </th>
-                <th>Last Update Time </th>
-                <th>Update </th>
-                <th>Delete </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var patient in Model)
-            {
-            <tr>
-                <th>@patient.Id</th> 
-                <th>@patient.TC</th>
-                <td><a class="patintList" href="/Patient/PatientInformation/@patient.Id" data-id="@patient.Id">@patient.Name</a></td>
-                <td>@patient.Surname</td>
-                <td>@patient.Address</td>
-                <td>@patient.EMail</td>
-                <td>@patient.Phone</td>
-                <td>@patient.Province</td>
-                <td>@patient.District</td>
-                <td>@patient.CreateTime</td>
-                <td>@patient.LastUpdateTime</td>
-                <td><a class="btn btn-success btnUpdate" href="/Patient/PatientUpdate/@patient.Id" data-id="@patient.Id">Güncelle </a></td>
-
-                <td><a class="btn btn-success btnUpdate" href="/Patient/PatientDelete/@patient.Id" data-id="@patient.Id">sil </a></td>
-
-                
-
-            </tr>
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
             }
-        </tbody>
+
+                .dropdown-content a:hover {
+                    background-color: #f1f1f1
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style=" max-width: 100%;">
+        <div class="header form-control" style=" color: #ff9030; text-align: center; border: solid 2px black; margin-top: 2px; background-color: green; height: 45px;"> <h3>Hasta Listesi</h3></div>
+        <div>
+            <a class="btn btn-success btnAdd" href="/Patient/PatientAdd" style="margin-top:5px;">Yeni Hasta Ekle</a>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Dropdown</button>
+            <div class="dropdown-content">
+                <a class="btn btn-success btnAdd" href="/Patient/PatientExisting" style="margin-top:5px;">Mevcut Hastalar</a>
+                <a class="btn btn-success btnAdd" href="/Patient/PatientRecovery" style="margin-top:5px;">Hastalık Durumu Bitmiş Hastalar</a>
+            </div>
+        </div>
+        <table class=" table table table-striped" style="margin-top:15px;">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>T.C</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Address</th>
+                    <th>E-Mail</th>
+                    <th>Phone</th>
+                    <th>Province</th>
+                    <th>District</th>
+                    <th>CreateTime </th>
+                    <th>Last Update Time </th>
+                    <th>Update </th>
+                    <th>Delete </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var patient in Model)
+                {
+                    <tr>
+                        <th>@patient.Id</th>
+                        <th>@patient.TC</th>
+                        <td><a class="patintList" href="/Patient/PatientInformation/@patient.Id" data-id="@patient.Id">@patient.Name</a></td>
+                        <td>@patient.Surname</td>
+                        <td>@patient.Address</td>
+                        <td>@patient.EMail</td>
+                        <td>@patient.Phone</td>
+                        <td>@patient.Province</td>
+                        <td>@patient.District</td>
+                        <td>@patient.CreateTime</td>
+                        <td>@patient.LastUpdateTime</td>
+                        <td><a class="btn btn-success btnUpdate" href="/Patient/PatientUpdate/@patient.Id" data-id="@patient.Id">Güncelle </a></td>
+
+                        <td><a class="btn btn-success btnUpdate" href="/Patient/PatientDelete/@patient.Id" data-id="@patient.Id">sil </a></td>
+
+                    </tr>
+                }
+            </tbody>
 
 
-    </table>
-</div>
+        </table>
+    </div>
+</body>

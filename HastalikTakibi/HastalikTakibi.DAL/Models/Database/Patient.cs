@@ -6,7 +6,11 @@ using System.Text;
 namespace HastalikTakibi.DAL.Models.Database
 {
     [Table("patient")]
-    public class Patient:BaseTable
+    public class Patient:BasePatient
+    {
+ 
+    }
+    public class BasePatient:BaseTable
     {
         [Column("name")]
         public string Name { get; set; }
@@ -25,7 +29,6 @@ namespace HastalikTakibi.DAL.Models.Database
         [Column("district")]
         public string District { get; set; }
 
-       
     }
 
 }

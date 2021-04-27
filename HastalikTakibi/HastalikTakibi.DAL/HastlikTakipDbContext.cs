@@ -30,6 +30,8 @@ namespace HastalikTakibi.DAL
 
             modelBuilder.Entity<DiseaseView>().ToView("disease_vw");
             modelBuilder.Entity<PatientInformationView>().ToView("patientinformation_vm");
+            modelBuilder.Entity<PatientExisting>().ToView("patients");
+            modelBuilder.Entity<PatientRecovery>().ToView("patients_recovery");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -41,14 +43,14 @@ namespace HastalikTakibi.DAL
         public DbSet<User> User { get; set; }
         public DbSet<Disease> Disease { get; set; }
         public DbSet<DiseaseView> DiseaseView { get; set; }
-        public DbSet<Patient> Patient { get; set; }
-
+        public DbSet<Patient> Patients { get; set; }
         public DbSet<DiseaseCategory> DiseaseCategory { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<PatientInformation> PatientInformation { get; set; }
         public DbSet<PatientInformationView> PatientInformationView { get; set; }
-
+        public DbSet<PatientExisting> PatientExistings { get; set; }
+        public DbSet<PatientRecovery> PatientRecoveries { get; set; }
 
     }
 }
