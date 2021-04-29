@@ -1,4 +1,7 @@
-﻿@model List<HastalikTakibi.DAL.Models.Database.Patient>
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core
+
+@model IPagedList<HastalikTakibi.DAL.Models.Database.Patient>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -50,6 +53,18 @@
         .dropdown:hover .dropbtn {
             background-color: #3e8e41;
         }
+
+        .select-box {
+            word-wrap: normal;
+            background: darkgray;
+            margin: 7px;
+            height: 35px;
+            color: black;
+            font-size: 20px;
+            font-weight: 400;
+            font: icon;
+            border-radius: 3px;
+        }
     </style>
 </head>
 
@@ -57,57 +72,62 @@
     <div class="container" style=" max-width: 100%;">
         <div class="header form-control" style=" color: #ff9030; text-align: center; border: solid 2px black; margin-top: 2px; background-color: green; height: 45px;"> <h3>Hasta Listesi</h3></div>
         <div>
-            <a class="btn btn-success btnAdd" href="/Patient/PatientAdd" style="margin-top:5px;">Yeni Hasta Ekle</a>
+            <a class="btn btn-success btnAdd" href="/Patient/PatientAdd" style="margin-top:5px; float:left;">Yeni Hasta Ekle</a>
         </div>
-        <div class="dropdown">
-            <button class="dropbtn">Dropdown</button>
-            <div class="dropdown-content">
-                <a class="btn btn-success btnAdd" href="/Patient/PatientExisting" style="margin-top:5px;">Mevcut Hastalar</a>
-                <a class="btn btn-success btnAdd" href="/Patient/PatientRecovery" style="margin-top:5px;">Hastalık Durumu Bitmiş Hastalar</a>
-            </div>
+        <div class="select">
+            <select name="forma" onchange="location = this.value;" class="select-box">
+                <option value="">Seç</option>
+                <option value="PatientExisting">Mevcut Hastalar</option>
+                <option value="PatientRecovery">Hastalık Durumu Bitmiş Hastalar</option>
+
+            </select>
         </div>
-        <table class=" table table table-striped" style="margin-top:15px;">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>T.C</th>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Address</th>
-                    <th>E-Mail</th>
-                    <th>Phone</th>
-                    <th>Province</th>
-                    <th>District</th>
-                    <th>CreateTime </th>
-                    <th>Last Update Time </th>
-                    <th>Update </th>
-                    <th>Delete </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var patient in Model)
-                {
+        <div class="table-container" style="overflow-x:scroll">
+
+            <table class=" table table table-striped" style="margin-top:15px; width:max-content;">
+                <thead>
                     <tr>
-                        <th>@patient.Id</th>
-                        <th>@patient.TC</th>
-                        <td><a class="patintList" href="/Patient/PatientInformation/@patient.Id" data-id="@patient.Id">@patient.Name</a></td>
-                        <td>@patient.Surname</td>
-                        <td>@patient.Address</td>
-                        <td>@patient.EMail</td>
-                        <td>@patient.Phone</td>
-                        <td>@patient.Province</td>
-                        <td>@patient.District</td>
-                        <td>@patient.CreateTime</td>
-                        <td>@patient.LastUpdateTime</td>
-                        <td><a class="btn btn-success btnUpdate" href="/Patient/PatientUpdate/@patient.Id" data-id="@patient.Id">Güncelle </a></td>
-
-                        <td><a class="btn btn-success btnUpdate" href="/Patient/PatientDelete/@patient.Id" data-id="@patient.Id">sil </a></td>
-
+                        <th>id</th>
+                        <th>T.C</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Address</th>
+                        <th>E-Mail</th>
+                        <th>Phone</th>
+                        <th>Province</th>
+                        <th>District</th>
+                        <th>CreateTime </th>
+                        <th>Last Update Time </th>
+                        <th>Update </th>
+                        <th>Delete </th>
                     </tr>
-                }
-            </tbody>
+                </thead>
+                <tbody>
+                    @foreach (var patient in Model)
+                    {
+                        <tr>
+                            <th>@patient.Id</th>
+                            <th>@patient.TC</th>
+                            <td><a class="patintList" href="/Patient/PatientInformation/@patient.Id" data-id="@patient.Id">@patient.Name</a></td>
+                            <td>@patient.Surname</td>
+                            <td>@patient.Address</td>
+                            <td>@patient.EMail</td>
+                            <td>@patient.Phone</td>
+                            <td>@patient.Province</td>
+                            <td>@patient.District</td>
+                            <td>@patient.CreateTime</td>
+                            <td>@patient.LastUpdateTime</td>
+                            <td><a class="btn btn-success btnUpdate" href="/Patient/PatientUpdate/@patient.Id" data-id="@patient.Id">Güncelle </a></td>
 
+                            <td><a class="btn btn-success btnUpdate" href="/Patient/PatientDelete/@patient.Id" data-id="@patient.Id">sil </a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
 
-        </table>
+        </div>
+        <div class="pagination">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+        </div>
     </div>
 </body>

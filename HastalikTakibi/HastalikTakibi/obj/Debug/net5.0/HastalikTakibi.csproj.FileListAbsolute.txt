@@ -437,3 +437,11 @@ C:\Users\mehme\Source\Repos\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Deb
 C:\Users\mehme\Source\Repos\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.genruntimeconfig.cache
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\Razor\Views\Patient\PatientRecovery.cshtml.g.cs
 C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\Razor\Views\Patient\PatientExisting.cshtml.g.cs
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\X.PagedList.dll
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\X.PagedList.Mvc.Core.dll
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\bin\Debug\net5.0\X.PagedList.Web.Common.dll
+C:\Users\mehme\Documents\GitHub\HastalikTakibi\HastalikTakibi\HastalikTakibi\obj\Debug\net5.0\HastalikTakibi.MvcApplicationPartsAssemblyInfo.cs

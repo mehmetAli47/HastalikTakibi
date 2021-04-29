@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using X.PagedList;
 
 namespace HastalikTakibi.Controllers
 {
@@ -94,9 +94,9 @@ namespace HastalikTakibi.Controllers
             return firstId;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page=1)
         {
-            var patientList = _hastlikTakipDbContext.Patients.ToList();
+            var patientList = _hastlikTakipDbContext.Patients.ToPagedList(page,3);
 
             return View( patientList);
         }
