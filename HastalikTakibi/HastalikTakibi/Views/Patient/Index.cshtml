@@ -65,6 +65,18 @@
             font: icon;
             border-radius: 3px;
         }
+        .paging {
+            display: block;
+            width: max-content;
+            background:white !important;
+        }
+        .pageItem {
+            float: left;
+            font-size: x-large;
+            max-width: 20px !important;
+            color: blue !important;
+            cursor:move;
+        }
     </style>
 </head>
 
@@ -75,8 +87,8 @@
             <a class="btn btn-success btnAdd" href="/Patient/PatientAdd" style="margin-top:5px; float:left;">Yeni Hasta Ekle</a>
         </div>
         <div class="select">
-            <select name="forma" onchange="location = this.value;" class="select-box">
-                <option value="">Seç</option>
+            <select name="selectPatientListType" id="selectPatientListType" class="select-box">
+                <option value="All">Seç</option>
                 <option value="PatientExisting">Mevcut Hastalar</option>
                 <option value="PatientRecovery">Hastalık Durumu Bitmiş Hastalar</option>
 
@@ -84,50 +96,105 @@
         </div>
         <div class="table-container" style="overflow-x:scroll">
 
-            <table class=" table table table-striped" style="margin-top:15px; width:max-content;">
+            <table id="patientList" class=" table table table-striped" style="margin-top:15px; width:max-content;">
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>T.C</th>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Address</th>
-                        <th>E-Mail</th>
-                        <th>Phone</th>
-                        <th>Province</th>
-                        <th>District</th>
-                        <th>CreateTime </th>
-                        <th>Last Update Time </th>
-                        <th>Update </th>
-                        <th>Delete </th>
+                        <th>ID</th>
+                        <th>Tc</th>
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>Adres</th>
+                        <th>E-posta</th>
+                        <th>Telefon</th>
+                        <th>Doğum Yeri(il)</th>
+                        <th>Doğum Yeri(ilçe)</th>
+                        <th>Kayıt Zamanı</th>
+                        <th>Son Güncelleme Zamanı</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var patient in Model)
-                    {
-                        <tr>
-                            <th>@patient.Id</th>
-                            <th>@patient.TC</th>
-                            <td><a class="patintList" href="/Patient/PatientInformation/@patient.Id" data-id="@patient.Id">@patient.Name</a></td>
-                            <td>@patient.Surname</td>
-                            <td>@patient.Address</td>
-                            <td>@patient.EMail</td>
-                            <td>@patient.Phone</td>
-                            <td>@patient.Province</td>
-                            <td>@patient.District</td>
-                            <td>@patient.CreateTime</td>
-                            <td>@patient.LastUpdateTime</td>
-                            <td><a class="btn btn-success btnUpdate" href="/Patient/PatientUpdate/@patient.Id" data-id="@patient.Id">Güncelle </a></td>
-
-                            <td><a class="btn btn-success btnUpdate" href="/Patient/PatientDelete/@patient.Id" data-id="@patient.Id">sil </a></td>
-                        </tr>
-                    }
+                   
                 </tbody>
             </table>
 
         </div>
-        <div class="pagination">
-            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+        <div class="paging">
+            @*@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))*@
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $("#selectPatientListType").change(function () {
+                var selected = $(this).val();
+                GetPatientList(selected);
+            });
+            GetPatientList($("#selectPatientListType").val(),1);
+            
+        });
+        function GetPageRecords(page) {
+            var selected = $("#selectPatientListType").val();
+            console.log("page seçildi");
+            GetPatientList(selected, page);
+        }
+        function GetPatientList(patientListType, page) {
+            $("#patientList tbody").html("");
+            $(".paging").html("");
+            $.ajax({
+                url: '/Patient/GetPatientList',
+                data: { patientListType: patientListType, page: page },
+                type: "post",
+                success: function (gridView) {
+                    if (gridView == undefined)
+                        return;
+                    var patientList = gridView.ObjList;
+                    for (var i = 0; i < patientList.length; i++) {
+                        $("#patientList tbody").html(
+                            $("#patientList tbody").html()
+                            + '<tr>'
+                            + '<th>' + patientList[i].Id + '</th>'
+                            + '<th>' + patientList[i].TC + '</th>'
+                            + '<td><a class="patintList" href="/Patient/PatientInformation/' + patientList[i].Id + '" data-id="' + patientList[i].Id + '">' + patientList[i].Name + '</a></td>'
+                            + '<td>' + patientList[i].Surname + '</td> '
+                            + '<td>' + patientList[i].Address + '</td> '
+                            + '<td>' + patientList[i].EMail + '</td> '
+                            + '<td>' + patientList[i].Phone + '</td> '
+                            + '<td>' + patientList[i].Province + '</td> '
+                            + '<td>' + patientList[i].District + '</td> '
+                            + '<td>' + patientList[i].CreateTime + '</td> '
+                            + '<td>' + patientList[i].LastUpdateTime + '</td> '
+                            + '<td><a class="btn btn-success btnUpdate" href="/Patient/PatientUpdate/' + patientList[i].Id + '" data-id="' + patientList[i].Id + '">Güncelle </a></td>'
+                            + '<td><a class="btn btn-success btnUpdate" href="/Patient/PatientDelete/' + patientList[i].Id + '" data-id="' + patientList[i].Id + '">sil </a></td>'
+                            + '</tr>');
+                    }
+
+                    var totalCount = gridView.TotalCount;
+                    var pageCount = Math.ceil(totalCount / 2);
+                    for (var i = 0; i < pageCount; i++) {
+
+                        var a = document.createElement("a");
+                        a.href = "#";
+                        a.setAttribute("class", "pageItem");
+                        a.setAttribute("data-index", (i + 1));
+                        a.onclick = function () {
+                            var selected = $("#selectPatientListType").val();
+                            var page = $(this).attr("data-index");
+                            console.log("page seçildi");
+                            GetPatientList(selected, page);
+                        };
+                        a.innerHTML = (i + 1);
+                        $(".paging").append(a);
+                    }
+
+
+                },
+                error: function () {
+                }
+            });
+
+
+        }
+    </script>
+
+  
 </body>

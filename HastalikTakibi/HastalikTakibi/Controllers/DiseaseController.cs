@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace HastalikTakibi.Controllers
 {
@@ -15,7 +16,7 @@ namespace HastalikTakibi.Controllers
         {
 
         }
-        public IActionResult Index(int? categoryId)
+        public IActionResult Index(int? categoryId,int page=1)
         {
             List<DAL.Models.Database.DiseaseView> diseaseList = new List<DiseaseView>();
             if (categoryId == null)
@@ -29,7 +30,7 @@ namespace HastalikTakibi.Controllers
                                where dc.CategoryId==categoryId
                                select d).ToList();
             }
-            return View(diseaseList);
+            return View(diseaseList.ToPagedList(page,10));
         }
 
         public void SetCategory()

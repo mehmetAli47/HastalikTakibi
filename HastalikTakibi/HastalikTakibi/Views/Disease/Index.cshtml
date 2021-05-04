@@ -1,15 +1,31 @@
-﻿@model List<HastalikTakibi.DAL.Models.Database.DiseaseView>
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core
+
+@model IPagedList<HastalikTakibi.DAL.Models.Database.DiseaseView>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
-    
+
     <script type="text/javascript" language="JavaScript"></script>
-</head>
+   
 <style>
-    
+    .paging {
+        display: block;
+        width: max-content;
+        font-size: xx-large;
+        margin-left: 45px;
+        font-family: sans-serif;
+        border: 1px solid;
+        background: darkgrey;
+        height: 50px;
+        margin-top: 15px;
+    }
 </style>
+
+</head>
+
 <body>
     <div class="container" style=" max-width: initial;">
         <div>
@@ -19,13 +35,11 @@
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>Name</th>
+                        <th>Ad</th>
                         <th>Hastalık Kategorisi </th>
-                        <th>First Seen Date</th>
-                        <th>CreateTime </th>
-                        <th>Last Update Time </th>
-                        <th>Update </th>
-                        <th>Delete </th>
+                        <th>İlk Görülme Zamanı</th>
+                        <th>Kayıt Zamanı </th>
+                        <th>Son Güncelleme Zamanı </th>
                     </tr>
                 </thead>
 
@@ -49,7 +63,9 @@
 
             </table>
         </div>
-
+        <div class="paging">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+        </div>
     </div>
 </body>
 

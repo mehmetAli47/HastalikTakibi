@@ -94,25 +94,45 @@ namespace HastalikTakibi.Controllers
             return firstId;
         }
 
-        public IActionResult Index(int page=1)
+        
+        public IActionResult Index()
         {
-            var patientList = _hastlikTakipDbContext.Patients.ToPagedList(page,3);
-
-            return View( patientList);
-        }
-        public IActionResult PatientExisting()
-        {
-            var patientexsiting = _hastlikTakipDbContext.PatientExistings.ToList();
-
-            return View(patientexsiting);
-        }
-        public IActionResult PatientRecovery()
-        {
-            var patientrecovery = _hastlikTakipDbContext.PatientRecoveries.ToList();
-            return View(patientrecovery);
+           
+            return View();
         }
 
-        public IActionResult PatientInformation(int id)
+        public IActionResult GetPatientList(string patientListType,int page = 1)
+        {
+            if(patientListType== "PatientExisting")
+            {
+                GridResponseVM<PatientExisting> gridResponseVM = new GridResponseVM<PatientExisting>();
+                var listObj= _hastlikTakipDbContext.PatientExistings.ToPagedList(page, 2);
+                gridResponseVM.TotalCount = listObj.TotalItemCount;
+                gridResponseVM.Page = page;
+                gridResponseVM.ObjList = listObj.ToList();
+                return Json(gridResponseVM);
+            }
+            else if (patientListType == "PatientRecovery")
+            {
+                GridResponseVM<PatientRecovery> gridResponseVM = new GridResponseVM<PatientRecovery>();
+                var listObj = _hastlikTakipDbContext.PatientRecoveries.ToPagedList(page, 2);
+                gridResponseVM.TotalCount = listObj.TotalItemCount;
+                gridResponseVM.Page = page;
+                gridResponseVM.ObjList = listObj.ToList();
+                return Json(gridResponseVM);
+            }
+            else
+            {
+                GridResponseVM<Patient> gridResponseVM = new GridResponseVM<Patient>();
+                var listObj = _hastlikTakipDbContext.Patients.ToPagedList(page, 2);
+                gridResponseVM.TotalCount = listObj.TotalItemCount;
+                gridResponseVM.Page = page;
+                gridResponseVM.ObjList = listObj.ToList();
+                return Json(gridResponseVM);
+            }
+        }
+
+        public IActionResult PatientInformation(int id,int page=1)
         {
             var contenxt = HttpContext;
             ViewBag.PatientId = id;
@@ -126,7 +146,7 @@ namespace HastalikTakibi.Controllers
                                       join d in _hastlikTakipDbContext.Disease on p.DiseaseId  equals d.Id
                                       where p.PatientId == id
                                       select p).ToList();
-            return View(patientinformationList);
+            return View(patientinformationList.ToPagedList(page,10));
         }
        
         public IActionResult PatientAdd()
@@ -386,6 +406,8 @@ namespace HastalikTakibi.Controllers
 
            
         }
+
+        
 
     }
 }
