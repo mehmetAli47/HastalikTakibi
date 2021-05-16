@@ -1,5 +1,4 @@
-﻿@model HastalikTakibi.Models.User
-
+﻿@model HastalikTakibi.Models.DiseaseVm
 @using Microsoft.AspNetCore.Http;
 @{
     Layout = "~/Views/Shared/_layout.cshtml";
@@ -16,11 +15,38 @@
         }
     </style>
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
-    <title>OpenLayers example</title>
 </head>
 <body>
-    <h2>My Map</h2>
-    <div id="map" class="map"></div>
+    <h2>Harita</h2>
+    <div class="row">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-8">Hastalık Yoğunluk Haritası</div>
+                <div class="col-4">
+                    <i class="fa fa-eye-slash" id="addRemoveHeatmap" aria-hidden="true"></i>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="row">
+                <div class="col-8">Hastalık Seç</div>
+                <div class="col-4">
+                    <select id="diseaseList" class="form-control">
+                        <option value="-1">Hastalık Seç</option>
+                        @foreach (SelectListItem item in ViewBag.DiseaseList)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div id="map" class="map"></div>
+        </div>
+    </div>
+
     <script type="text/javascript">
         var map = new ol.Map({
             target: 'map',
@@ -29,13 +55,6 @@
                     source: new ol.source.XYZ({
                         url: 'http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}'
                     })
-                }), 
-                new ol.layer.Tile({
-                    source: new ol.source.TileWMS({
-                        url: 'http://localhost:8080/geoserver/ht/wms',
-                        params: { 'LAYERS': 'ht:disease_location_v', 'TILED': true, 'STYLES':'heatmap'},
-                        serverType:'geoserver'
-                    })
                 }),
             ],
             view: new ol.View({
@@ -43,6 +62,66 @@
                 zoom: 7
             })
         });
+        var heatmapLayer = undefined;
+        var params = {};
+        params.LAYERS = 'ht:disease_location_v';
+        params.TILED = true;
+        params.STYLES = 'heatmap';
+        $(document).ready(function () {
+
+            $("#addRemoveHeatmap").on("click", function () {
+                if ($(this).hasClass("fa-eye-slash")) {
+                    $(this).removeClass("fa-eye-slash");
+                    $(this).addClass("fa-eye");
+                    AddHeatmap();
+                }
+                else {
+                    $(this).removeClass("fa-eye");
+                    $(this).addClass("fa-eye-slash");
+                    RemoveHeatmap();
+                }
+
+            });
+
+            $("#diseaseList").on("change", function () {
+                console.log("değişti");
+                if ($("#addRemoveHeatmap").hasClass("fa-eye")) {
+                    RemoveHeatmap();
+                    AddHeatmap();
+                }
+            });
+
+        });
+        function AddHeatmap() {
+            if (heatmapLayer != undefined) {
+                map.removeLayer(heatmapLayer);
+                heatmapLayer = undefined;
+            }
+
+            var diseaseId = $("#diseaseList").val();
+            console.log(diseaseId);
+            if (diseaseId != "-1") {
+                params.cql_filter = '(id=' + parseInt(diseaseId) + ')';
+            }
+            else {
+                params.cql_filter = "1=1";
+            }
+
+            console.log(params);
+            heatmapLayer = new ol.layer.Tile({
+                source: new ol.source.TileWMS({
+                    url: 'http://localhost:8080/geoserver/ht/wms',
+                    params: params,
+                    serverType: 'geoserver'
+                })
+            });
+            map.addLayer(heatmapLayer);
+        }
+        function RemoveHeatmap() {
+            if (heatmapLayer != undefined)
+                map.removeLayer(heatmapLayer);
+            heatmapLayer = undefined;
+        }
     </script>
 </body>
 </html>

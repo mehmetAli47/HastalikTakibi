@@ -106,7 +106,7 @@ namespace HastalikTakibi.Controllers
             if(patientListType== "PatientExisting")
             {
                 GridResponseVM<PatientExisting> gridResponseVM = new GridResponseVM<PatientExisting>();
-                var listObj= _hastlikTakipDbContext.PatientExistings.ToPagedList(page, 2);
+                var listObj= _hastlikTakipDbContext.PatientExistings.ToPagedList(page, 10);
                 gridResponseVM.TotalCount = listObj.TotalItemCount;
                 gridResponseVM.Page = page;
                 gridResponseVM.ObjList = listObj.ToList();
@@ -115,7 +115,7 @@ namespace HastalikTakibi.Controllers
             else if (patientListType == "PatientRecovery")
             {
                 GridResponseVM<PatientRecovery> gridResponseVM = new GridResponseVM<PatientRecovery>();
-                var listObj = _hastlikTakipDbContext.PatientRecoveries.ToPagedList(page, 2);
+                var listObj = _hastlikTakipDbContext.PatientRecoveries.ToPagedList(page, 10);
                 gridResponseVM.TotalCount = listObj.TotalItemCount;
                 gridResponseVM.Page = page;
                 gridResponseVM.ObjList = listObj.ToList();
@@ -124,7 +124,7 @@ namespace HastalikTakibi.Controllers
             else
             {
                 GridResponseVM<Patient> gridResponseVM = new GridResponseVM<Patient>();
-                var listObj = _hastlikTakipDbContext.Patients.ToPagedList(page, 2);
+                var listObj = _hastlikTakipDbContext.Patients.ToPagedList(page, 10);
                 gridResponseVM.TotalCount = listObj.TotalItemCount;
                 gridResponseVM.Page = page;
                 gridResponseVM.ObjList = listObj.ToList();
@@ -148,13 +148,11 @@ namespace HastalikTakibi.Controllers
                                       select p).ToList();
             return View(patientinformationList.ToPagedList(page,10));
         }
-       
+
         public IActionResult PatientAdd()
         {
             return View();
         }
- 
-
         [HttpPost]
         public JsonResult GetDiseasByCategoryId(int categoryId)
         {

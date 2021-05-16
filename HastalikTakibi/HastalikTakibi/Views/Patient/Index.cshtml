@@ -65,17 +65,19 @@
             font: icon;
             border-radius: 3px;
         }
+
         .paging {
             display: block;
             width: max-content;
-            background:white !important;
+            background: white !important;
         }
+
         .pageItem {
             float: left;
             font-size: x-large;
             max-width: 20px !important;
             color: blue !important;
-            cursor:move;
+            cursor: move;
         }
     </style>
 </head>
@@ -114,7 +116,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                   
                 </tbody>
             </table>
 
@@ -129,8 +130,8 @@
                 var selected = $(this).val();
                 GetPatientList(selected);
             });
-            GetPatientList($("#selectPatientListType").val(),1);
-            
+            GetPatientList($("#selectPatientListType").val(), 1);
+
         });
         function GetPageRecords(page) {
             var selected = $("#selectPatientListType").val();
@@ -169,7 +170,7 @@
                     }
 
                     var totalCount = gridView.TotalCount;
-                    var pageCount = Math.ceil(totalCount / 2);
+                    var pageCount = Math.ceil(totalCount / 10);
                     for (var i = 0; i < pageCount; i++) {
 
                         var a = document.createElement("a");
@@ -196,5 +197,5 @@
         }
     </script>
 
-  
+
 </body>

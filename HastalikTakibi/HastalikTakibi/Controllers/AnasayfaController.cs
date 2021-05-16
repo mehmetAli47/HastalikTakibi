@@ -2,7 +2,11 @@
 using HastalikTakibi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace HastalikTakibi.Controllers
 {
     public class AnasayfaController : AdminBaseController
@@ -10,18 +14,25 @@ namespace HastalikTakibi.Controllers
         public AnasayfaController(HastlikTakipDbContext hastlikTakipDbContext) : base(hastlikTakipDbContext)
         {
         }
-
-        public IActionResult Anasayfa()
+        public void SetDisease()
         {
-            User usersession = null;
-            try
+            var diseaseList = new List<SelectListItem>();
+            var disease = _hastlikTakipDbContext.Disease.ToList();
+            foreach(var item in disease)
             {
-                usersession = JsonConvert.DeserializeObject<Models.User>(HttpContext.Session.GetString("SessionUser"));
+                diseaseList.Add(new SelectListItem
+                {
+                    Text = item.Name,
+                    Value = item.Id.ToString()
+                }); 
 
             }
-            catch { }
-
-            return View(usersession);
+            ViewBag.DiseaseList = diseaseList;
+        }
+        public IActionResult Anasayfa()
+        {
+            SetDisease();
+            return View();
         }
     }
  }
